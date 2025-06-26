@@ -1,0 +1,7 @@
+{
+  "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",
+  "google_creds": "google-credentials.json",
+  "sheet_id": "YOUR_GOOGLE_SHEET_ID",
+  "delay_ms": 700,
+  "start_question_id": "start"
+} 
