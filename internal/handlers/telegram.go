@@ -12,7 +12,7 @@ import (
 
 // TelegramHandler handles Telegram events
 type TelegramHandler struct {
-	bot              *bot.TelegramBot
+	bot              models.BotService
 	config           *models.Config
 	userStateManager models.UserStateService
 	questionManager  models.QuestionService
@@ -20,7 +20,7 @@ type TelegramHandler struct {
 
 // NewTelegramHandler creates a new Telegram handler
 func NewTelegramHandler(
-	telegramBot *bot.TelegramBot,
+	telegramBot models.BotService,
 	config *models.Config,
 	userStateManager models.UserStateService,
 	questionManager models.QuestionService,

@@ -3,6 +3,8 @@ package models
 
 import (
 	"errors"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 // Config structure for storing settings
@@ -108,6 +110,11 @@ type BotService interface {
 	SendImages(userID int64, images []string, delay int) error
 	SendMessage(userID int64, text string, keyboard interface{}) error
 	SendMessages(userID int64, messages []string, userName string, keyboard interface{}) error
+	ProcessQuestion(userID int64, question *Question) error
+	ProcessAnswer(userID int64, answer string) error
+	ProcessOptionAnswer(userID int64, optionText string) error
+	HandleAutoAdvance(userID int64, question *Question) error
+	GetAPI() *tgbotapi.BotAPI // Returns Telegram Bot API instance
 }
 
 // QuestionService interface for working with questions

@@ -115,16 +115,19 @@ By default, the bot uses demo questions from `configs/questions.json`. This is p
 For production use, you should create your own questions file outside the repository:
 
 1. **Create your questions file:**
+
    ```bash
    cp configs/questions.example.json my-questions.json
    ```
 
 2. **Configure the path:**
+
    ```bash
    export QUESTIONS_FILE_PATH="my-questions.json"
    ```
 
 3. **Run the bot:**
+
    ```bash
    ./telegram-bot
    ```

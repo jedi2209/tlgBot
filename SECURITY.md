@@ -74,4 +74,4 @@ For production, it's recommended to:
 1. Use environment variables instead of files
 2. Store secrets in specialized services (AWS Secrets Manager, Azure Key Vault, etc.)
 3. Don't include sensitive data in code or configuration files
-4. Regularly rotate tokens and keys 
+4. Regularly rotate tokens and keys
