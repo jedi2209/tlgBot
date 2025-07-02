@@ -13,6 +13,7 @@
 *.dylib
 /telegram-bot
 /telegram-bot_linux
+/assets
 
 # Test binary, built with `go test -c`
 *.test
@@ -75,7 +76,6 @@ config.json.local
 
 # Custom questions files (keep your questions private)
 *questions.json
-!configs/questions.json
 !configs/questions.example.json
 my-questions*
 private-questions*
