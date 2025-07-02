@@ -1,5 +1,11 @@
 # Telegram Interactive Survey Bot in Go
 
+[![CI](https://github.com/jedi2209/tlgBot/workflows/CI/badge.svg)](https://github.com/jedi2209/tlgBot/actions)
+[![codecov](https://codecov.io/gh/jedi2209/tlgBot/branch/main/graph/badge.svg)](https://codecov.io/gh/jedi2209/tlgBot)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jedi2209/tlgBot)](https://goreportcard.com/report/github.com/jedi2209/tlgBot)
+[![Go Version](https://img.shields.io/badge/Go-1.23-blue.svg)](https://golang.org/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 Interactive Telegram bot for conducting surveys with rich features:
 
 - Tree-based question logic with transitions
@@ -105,6 +111,8 @@ make help
 
 ## Testing
 
+### Local Testing
+
 ```bash
 # Run all tests
 make test
@@ -125,12 +133,35 @@ make bench
 make test-clean
 ```
 
+### Continuous Integration
+
+This project uses GitHub Actions for automated testing and quality checks:
+
+#### CI Pipeline Features
+
+- **Multi-version testing**: Tests run on Go 1.23
+- **Comprehensive test suite**: Unit tests, race condition detection, and coverage analysis
+- **Code quality**: Automated linting with golangci-lint
+- **Build validation**: Cross-platform builds (Linux and macOS)
+- **Benchmarking**: Performance testing on main branch updates
+- **Dependency management**: Automated dependency updates via Dependabot
+
+#### Workflow Triggers
+
+- **Push to main/develop**: Full test suite, build, and benchmarks
+- **Pull requests**: All tests and checks (excluding benchmarks)
+- **Weekly dependency updates**: Automated via Dependabot
+
+#### Coverage Reporting
+
+Coverage reports are automatically uploaded to Codecov on every CI run.
+
 ### Code Coverage
 
 Current code coverage:
 
 - **internal/models**: 100%
-- **internal/services**: 100%
+- **internal/services**: 100%  
 - **internal/config**: 90.6%
 - **Total coverage**: 31.6%
 
