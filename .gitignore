@@ -11,8 +11,8 @@
 *.dll
 *.so
 *.dylib
-telegram-bot
-telegram-bot_linux
+/telegram-bot
+/telegram-bot_linux
 
 # Test binary, built with `go test -c`
 *.test
