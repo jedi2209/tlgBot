@@ -1,3 +1,4 @@
+// Package config provides configuration management for the telegram bot.
 package config
 
 import (

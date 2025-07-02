@@ -107,7 +107,7 @@ func TestUserStateManagerGetOrCreateUserState(t *testing.T) {
 	}
 }
 
-func TestUserStateManagerConcurrentAccess(t *testing.T) {
+func TestUserStateManagerConcurrentAccess(_ *testing.T) {
 	manager := NewUserStateManager()
 	userID := int64(123)
 	userName := testUserName
