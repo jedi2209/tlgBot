@@ -33,7 +33,7 @@ func main() {
 	log.Printf("Authorized as %s", botAPI.Self.UserName)
 
 	// Load questions
-	questionsMap, err := config.LoadQuestions("configs/questions.json")
+	questionsMap, err := config.LoadQuestions(cfg.QuestionsFilePath)
 	if err != nil {
 		log.Fatalf("Failed to load questions: %v", err)
 	}

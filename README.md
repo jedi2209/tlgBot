@@ -16,6 +16,8 @@ Interactive Telegram bot for conducting surveys with rich features:
 - Message personalization (name substitution)
 - Response summary
 - External links
+- Flexible question configuration system
+- Support for custom questions outside the repository
 
 ## Project Structure
 
@@ -31,16 +33,17 @@ tlgbot/
 │   ├── models/             # Data models
 │   └── services/           # Business logic and services
 ├── configs/                # Configuration files
-│   ├── config.example.json
-│   └── questions.json
+│   ├── config.example.json # Configuration example
+│   ├── questions.json      # Demo questions
+│   └── questions.example.json # Questions example
 ├── assets/                 # Static resources (images)
-├── docs/                   # Documentation
-│   ├── README.md           # Detailed documentation
-│   ├── SECURITY.md         # Security policy
-│   └── TESTING.md          # Testing documentation
 ├── go.mod                  # Go module
 ├── go.sum                  # Module dependencies
 ├── Makefile                # Build commands
+├── MIGRATION_GUIDE.md      # Migration guide for custom questions
+├── QUESTIONS_SETUP.md      # Guide for setting up custom questions
+├── README.md               # This file
+├── SECURITY.md             # Security policy
 └── .gitignore              # Git exclusions
 ```
 
@@ -48,19 +51,35 @@ tlgbot/
 
 ### Requirements
 
-- Go 1.21 or higher
+- Go 1.23 or higher
 - Telegram bot token
 
-### Environment Variables
+### Configuration
 
-Create environment variables or use a `.env` file:
+You can configure the bot using either environment variables or a JSON configuration file.
+
+#### Option 1: Environment Variables
+
+Create environment variables:
 
 ```bash
 export TELEGRAM_TOKEN="your_telegram_bot_token"
-export GOOGLE_CREDS="google-credentials.json"  # optional
-export SHEET_ID="your_google_sheet_id"         # optional
-export DELAY_MS="700"                           # optional
-export START_QUESTION_ID="start"               # optional
+export QUESTIONS_FILE_PATH="path/to/your/questions.json"  # optional
+export START_QUESTION_ID="start"                         # optional
+export DELAY_MS="700"                                     # optional
+```
+
+#### Option 2: Configuration File
+
+Create a configuration file based on `configs/config.example.json`:
+
+```json
+{
+  "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",
+  "questions_file_path": "configs/questions.json",
+  "delay_ms": 700,
+  "start_question_id": "start"
+}
 ```
 
 ### Build and Run
@@ -75,22 +94,54 @@ make build
 # Run project (requires TELEGRAM_TOKEN environment variable)
 make run
 
-# Alternative run after build
+# Alternative: run with configuration file
+./telegram-bot config.json
+
+# Alternative: run compiled binary with environment variables
 ./telegram-bot
 
 # Show all available commands
 make help
 ```
 
+## Questions Configuration
+
+### Using Demo Questions
+
+By default, the bot uses demo questions from `configs/questions.json`. This is perfect for trying out the bot.
+
+### Using Custom Questions
+
+For production use, you should create your own questions file outside the repository:
+
+1. **Create your questions file:**
+   ```bash
+   cp configs/questions.example.json my-questions.json
+   ```
+
+2. **Configure the path:**
+   ```bash
+   export QUESTIONS_FILE_PATH="my-questions.json"
+   ```
+
+3. **Run the bot:**
+   ```bash
+   ./telegram-bot
+   ```
+
+For detailed instructions, see [QUESTIONS_SETUP.md](QUESTIONS_SETUP.md).
+
+### Migration from Old Versions
+
+If you have existing questions in the repository, see [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md) for migration instructions.
+
 ## Usage
 
-1. Configure environment variables with bot token
-2. Edit the `configs/questions.json` file according to your needs
-3. Run the bot with one of the commands:
-   - `make run` - to run from source code
-   - `make build && ./telegram-bot` - to run compiled binary
+1. Configure your Telegram bot token (see Configuration section)
+2. Set up your questions (use demo questions or create custom ones)
+3. Run the bot with one of the methods described above
 
-**Important:** When running without the `TELEGRAM_TOKEN` environment variable set, the application will exit with an error.
+**Important:** The application requires a valid `TELEGRAM_TOKEN` to function.
 
 ## Development
 
@@ -165,8 +216,6 @@ Current code coverage:
 - **internal/config**: 90.6%
 - **Total coverage**: 31.6%
 
-For detailed testing documentation see [docs/TESTING.md](docs/TESTING.md)
-
 ## Deployment
 
 ```bash
@@ -179,14 +228,23 @@ make clean
 
 ## Documentation
 
-More detailed documentation is available in the `docs/` folder:
+Documentation files in the project:
 
-- [README.md](docs/README.md) - Detailed feature description and configuration
-- [TESTING.md](docs/TESTING.md) - Testing guide
-- [SECURITY.md](docs/SECURITY.md) - Security policy
+- [QUESTIONS_SETUP.md](QUESTIONS_SETUP.md) - Detailed guide for setting up custom questions
+- [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md) - Guide for migrating from old question format
+- [SECURITY.md](SECURITY.md) - Security policy
 
 ## Dependencies
 
 - `github.com/go-telegram-bot-api/telegram-bot-api/v5` - Telegram Bot API
 
 For current list of dependencies see `go.mod` file.
+
+## Environment Variables Reference
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `TELEGRAM_TOKEN` | - | Telegram bot token (required) |
+| `QUESTIONS_FILE_PATH` | `configs/questions.json` | Path to questions file |
+| `START_QUESTION_ID` | `start` | ID of the starting question |
+| `DELAY_MS` | `700` | Default delay between messages (ms) |

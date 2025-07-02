@@ -121,11 +121,12 @@ func TestIntegrationQuestionFlow(t *testing.T) {
 func TestIntegrationConfigAndQuestions(t *testing.T) {
 	// Test configuration loading with valid values
 	testConfig := &models.Config{
-		TelegramToken:   "test_token",
-		GoogleCreds:     "test-creds.json",
-		SheetID:         "test_sheet",
-		DelayMs:         1000,
-		StartQuestionID: "start",
+		TelegramToken:     "test_token",
+		GoogleCreds:       "test-creds.json",
+		SheetID:           "test_sheet",
+		DelayMs:           1000,
+		StartQuestionID:   "start",
+		QuestionsFilePath: "configs/questions.json",
 	}
 
 	// Check configuration validation

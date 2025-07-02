@@ -73,6 +73,14 @@ google-credentials.json
 config.json
 config.json.local
 
+# Custom questions files (keep your questions private)
+*questions.json
+!configs/questions.json
+!configs/questions.example.json
+my-questions*
+private-questions*
+user-questions*
+
 # Build artifacts
 tlgbot
 

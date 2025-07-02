@@ -1,0 +1,65 @@
+[
+  {
+    "id": "start",
+    "messages": [
+      "Welcome to the Demo Bot, {name}!",
+      "This is a demonstration of the question flow system."
+    ],
+    "auto_advance": true,
+    "auto_advance_delay_ms": 2000,
+    "options": [
+      {"text": "Continue", "next_id": "demo_choice"}
+    ]
+  },
+  {
+    "id": "demo_choice",
+    "text": "What would you like to explore?",
+    "delay_ms": 1000,
+    "options": [
+      {"text": "🎯 Basic Flow", "next_id": "basic_demo"},
+      {"text": "🔧 Advanced Features", "next_id": "advanced_demo"}
+    ]
+  },
+  {
+    "id": "basic_demo",
+    "text": "This demonstrates a basic question with simple options.",
+    "options": [
+      {"text": "Option A", "next_id": "feedback"},
+      {"text": "Option B", "next_id": "feedback"}
+    ]
+  },
+  {
+    "id": "advanced_demo",
+    "text": "This shows advanced features like auto-advance and custom delays.",
+    "auto_advance": true,
+    "auto_advance_delay_ms": 3000,
+    "options": [
+      {"text": "Next", "next_id": "input_demo"}
+    ]
+  },
+  {
+    "id": "input_demo",
+    "text": "Please enter your feedback about this demo:",
+    "input_type": "text",
+    "input_placeholder": "Your thoughts here...",
+    "options": [
+      {"text": "Submit", "next_id": "end"}
+    ]
+  },
+  {
+    "id": "feedback",
+    "text": "Thank you for your choice! Any additional feedback?",
+    "options": [
+      {"text": "Great demo!", "next_id": "end"},
+      {"text": "Could be better", "next_id": "end"},
+      {"text": "No feedback", "next_id": "end"}
+    ]
+  },
+  {
+    "id": "end",
+    "text": "Thank you for trying the demo, {name}! 🎉\n\nThis is a sample bot implementation.",
+    "options": [],
+    "external_link": "https://github.com",
+    "external_text": "View Source Code"
+  }
+] 

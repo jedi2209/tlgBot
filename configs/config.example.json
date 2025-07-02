@@ -3,5 +3,6 @@
   "google_creds": "google-credentials.json",
   "sheet_id": "YOUR_GOOGLE_SHEET_ID",
   "delay_ms": 700,
-  "start_question_id": "start"
+  "start_question_id": "start",
+  "questions_file_path": "configs/questions.json"
 } 

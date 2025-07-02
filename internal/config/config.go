@@ -13,19 +13,21 @@ import (
 
 // Constants for environment variables
 const (
-	EnvTelegramToken   = "TELEGRAM_TOKEN"
-	EnvGoogleCreds     = "GOOGLE_CREDS"
-	EnvSheetID         = "SHEET_ID"
-	EnvDelayMs         = "DELAY_MS"
-	EnvStartQuestionID = "START_QUESTION_ID"
+	EnvTelegramToken     = "TELEGRAM_TOKEN"
+	EnvGoogleCreds       = "GOOGLE_CREDS"
+	EnvSheetID           = "SHEET_ID"
+	EnvDelayMs           = "DELAY_MS"
+	EnvStartQuestionID   = "START_QUESTION_ID"
+	EnvQuestionsFilePath = "QUESTIONS_FILE_PATH"
 )
 
 // Default values
 const (
-	DefaultGoogleCreds     = "google-credentials.json"
-	DefaultSheetID         = "YOUR_GOOGLE_SHEET_ID"
-	DefaultDelayMs         = 700
-	DefaultStartQuestionID = "start"
+	DefaultGoogleCreds       = "google-credentials.json"
+	DefaultSheetID           = "YOUR_GOOGLE_SHEET_ID"
+	DefaultDelayMs           = 700
+	DefaultStartQuestionID   = "start"
+	DefaultQuestionsFilePath = "configs/questions.json"
 )
 
 // LoadFromEnv loads configuration from environment variables
@@ -44,6 +46,7 @@ func LoadFromEnv() (*models.Config, error) {
 	config.GoogleCreds = getEnvOrDefault(EnvGoogleCreds, DefaultGoogleCreds)
 	config.SheetID = getEnvOrDefault(EnvSheetID, DefaultSheetID)
 	config.StartQuestionID = getEnvOrDefault(EnvStartQuestionID, DefaultStartQuestionID)
+	config.QuestionsFilePath = getEnvOrDefault(EnvQuestionsFilePath, DefaultQuestionsFilePath)
 
 	// Get delay with validation
 	config.DelayMs, err = getDelayFromEnv()

@@ -7,11 +7,12 @@ import (
 
 // Config structure for storing settings
 type Config struct {
-	TelegramToken   string `json:"telegram_token"`
-	GoogleCreds     string `json:"google_creds"`
-	SheetID         string `json:"sheet_id"`
-	DelayMs         int    `json:"delay_ms"`
-	StartQuestionID string `json:"start_question_id"`
+	TelegramToken     string `json:"telegram_token"`
+	GoogleCreds       string `json:"google_creds"`
+	SheetID           string `json:"sheet_id"`
+	DelayMs           int    `json:"delay_ms"`
+	StartQuestionID   string `json:"start_question_id"`
+	QuestionsFilePath string `json:"questions_file_path"`
 }
 
 // Validate checks configuration correctness

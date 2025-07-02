@@ -137,11 +137,12 @@ func TestLoadFromFileSuccess(t *testing.T) {
 	configPath := filepath.Join(tmpDir, "config.json")
 
 	testConfig := models.Config{
-		TelegramToken:   "file_token_123",
-		GoogleCreds:     "test-creds.json",
-		SheetID:         "test_sheet_id",
-		DelayMs:         500,
-		StartQuestionID: "test_start",
+		TelegramToken:     "file_token_123",
+		GoogleCreds:       "test-creds.json",
+		SheetID:           "test_sheet_id",
+		DelayMs:           500,
+		StartQuestionID:   "test_start",
+		QuestionsFilePath: "configs/test-questions.json",
 	}
 
 	configData, err := json.Marshal(testConfig)
