@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/jedi2209/tlgBot/branch/main/graph/badge.svg)](https://codecov.io/gh/jedi2209/tlgBot)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jedi2209/tlgBot)](https://goreportcard.com/report/github.com/jedi2209/tlgBot)
 [![Go Version](https://img.shields.io/badge/Go-1.23-blue.svg)](https://golang.org/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 
 Interactive Telegram bot for conducting surveys with rich features:
 
