@@ -18,6 +18,7 @@ The application supports configuration via environment variables for secure stor
 | `SHEET_ID` | Google Sheet ID | `YOUR_GOOGLE_SHEET_ID` |
 | `DELAY_MS` | Delay between messages in ms | `700` |
 | `START_QUESTION_ID` | First question ID | `start` |
+| `QUESTIONS_FILE_PATH` | Path to questions JSON file | `configs/questions.json` |
 
 ## Methods of Setting Variables
 
@@ -31,6 +32,7 @@ GOOGLE_CREDS=google-credentials.json
 SHEET_ID=your_sheet_id
 DELAY_MS=700
 START_QUESTION_ID=start
+QUESTIONS_FILE_PATH=configs/questions.json
 ```
 
 ### 2. Via command line
@@ -41,6 +43,7 @@ export GOOGLE_CREDS="google-credentials.json"
 export SHEET_ID="your_sheet_id"
 export DELAY_MS=700
 export START_QUESTION_ID="start"
+export QUESTIONS_FILE_PATH="configs/questions.json"
 ```
 
 ### 3. When running the application

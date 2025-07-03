@@ -9,6 +9,8 @@ import (
 	"strconv"
 
 	"tlgbot/internal/models"
+
+	"github.com/joho/godotenv"
 )
 
 // Constants for environment variables
@@ -31,15 +33,23 @@ const (
 )
 
 // LoadFromEnv loads configuration from environment variables
+// First tries to load .env file, then falls back to config.json if required variables are missing
 func LoadFromEnv() (*models.Config, error) {
-	config := &models.Config{}
+	// Try to load .env file if it exists
+	if err := godotenv.Load(); err != nil {
+		// It's okay if .env file doesn't exist, just log for debugging
+		log.Printf("No .env file found or error loading it: %v", err)
+	}
 
+	config := &models.Config{}
 	var err error
 
 	// Get required Telegram token
 	config.TelegramToken = os.Getenv(EnvTelegramToken)
 	if config.TelegramToken == "" {
-		return nil, fmt.Errorf("%s environment variable is required", EnvTelegramToken)
+		// Fallback to config.json if TELEGRAM_TOKEN is not set
+		log.Println("TELEGRAM_TOKEN not found in environment variables, trying to load from config.json")
+		return LoadFromFile("config.json")
 	}
 
 	// Get optional parameters with default values
